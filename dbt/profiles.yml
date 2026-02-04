@@ -1,0 +1,14 @@
+dbt_project:
+  outputs:
+    dev:
+      dataset: fraud_detection
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: ./../gcp-key.json
+      location: us-east1
+      method: service-account
+      priority: interactive
+      project: fraud-detection-486219
+      threads: 4
+      type: bigquery
+  target: dev

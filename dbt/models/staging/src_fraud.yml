@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: gcp_fraud_source
+    database: fraud-detection-486219
+    schema: fraud_detection
+    tables:
+      - name: raw_transactions
+        description: "Table from Spark"
