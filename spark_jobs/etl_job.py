@@ -11,7 +11,7 @@ def create_spark_session(app_name="Fraud detection ETL"):
         .config("spark.driver.memory", "4g") \
         .config("spark.executor.memory", "4g") \
         .getOrCreate()
-        
+
     return spark
 
 
@@ -46,29 +46,28 @@ def transform_data(df):
 
     df = df.withColumn("isCashOut", F.when(F.col("type") == "CASH_OUT", 1).otherwise(0)) \
         .withColumn("isCashIn", F.when(F.col("type") == "CASH_IN", 1).otherwise(0))
-    
+
     return df
 
-def main():
-    spark = create_spark_session()
 
-    input_path = "data/paysim.csv"
-    output_path = "data/transactions_parquet"
+def main(input_path="data/raw_augmented", output_path="data/transactions_augmented_parquet", n_partitions=50):
+    spark = create_spark_session()
 
     df = spark.read.csv(input_path, header=True, schema=define_schema())
 
     processed_df = transform_data(df)
 
+    processed_df.select("step", "nameOrig", "amount",
+                        "errorBalanceOrig", "stepDiff", "avgAmtLast3").show(5)
 
-    processed_df.select("step", "nameOrig", "amount", "errorBalanceOrig", "stepDiff", "avgAmtLast3").show(5)
-
-    # divide by 10 to reduce memory burden
-    processed_df.repartition(10) \
+    # To reduce memory burden
+    processed_df.repartition(n_partitions) \
         .write \
         .mode("overwrite") \
         .parquet(output_path)
 
     spark.stop()
+
 
 if __name__ == "__main__":
     main()
