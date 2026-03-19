@@ -30,6 +30,8 @@ notebooks/
 # Airflow
 logs/
 *.db
+airflow.cfg
+simple_auth_manager_passwords.json*
 
 # Environment
 .env
