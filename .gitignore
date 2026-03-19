@@ -11,6 +11,7 @@ wheels/
 
 # key
 gcp-key.json
+gcp-pipeline-key.json
 
 # data
 data/
@@ -19,3 +20,17 @@ notebooks/
 
 # dbt
 .user.yml
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Airflow
+logs/
+*.db
+
+# Environment
+.env
+.envrc
