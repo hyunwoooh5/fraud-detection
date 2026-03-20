@@ -1313,6 +1313,7 @@ dependencies = [
     { name = "dbt-bigquery" },
     { name = "pandas" },
     { name = "pyspark" },
+    { name = "python-hcl2" },
 ]
 
 [package.dev-dependencies]
@@ -1327,6 +1328,7 @@ requires-dist = [
     { name = "dbt-bigquery", specifier = ">=1.11.0" },
     { name = "pandas", specifier = ">=3.0.0" },
     { name = "pyspark", specifier = ">=4.1.1" },
+    { name = "python-hcl2", specifier = ">=7.3.1" },
 ]
 
 [package.metadata.requires-dev]
@@ -4657,6 +4659,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/82/ed/0301aeeac3e5353ef3d94b6ec08bbcabd04a72018415dcb29e588514bba8/python_dotenv-1.2.2.tar.gz", hash = "sha256:2c371a91fbd7ba082c2c1dc1f8bf89ca22564a087c2c287cd9b662adde799cf3", size = 50135, upload-time = "2026-03-01T16:00:26.196Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/d7/1959b9648791274998a9c3526f6d0ec8fd2233e4d4acce81bbae76b44b2a/python_dotenv-1.2.2-py3-none-any.whl", hash = "sha256:1d8214789a24de455a8b8bd8ae6fe3c6b69a5e3d64aa8a8e5d68e694bbcb285a", size = 22101, upload-time = "2026-03-01T16:00:25.09Z" },
+]
+
+[[package]]
+name = "python-hcl2"
+version = "7.3.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "lark" },
+    { name = "regex" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/50/8e/f82ed407a10c2dd4228ff0fceec8a16dd6a9191a2ed119233c04dccf2ca4/python_hcl2-7.3.1.tar.gz", hash = "sha256:f8f55583703daf7bbcb595a33c68de891064d565974ea39998b81d15a4c4657b", size = 35352, upload-time = "2025-07-24T12:33:49.883Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/99/56/8f6418645fee59dd7a85a6e155d13ebf07608edc98965b211b0ed86ef35a/python_hcl2-7.3.1-py3-none-any.whl", hash = "sha256:6bf6036d3dffac04e05e6aa58ff6e9a3710bba2171325584dfd7b3f8c99c6d4d", size = 22426, upload-time = "2025-07-24T12:33:49.015Z" },
 ]
 
 [[package]]

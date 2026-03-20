@@ -112,6 +112,8 @@ terraform apply -auto-approve
 terraform output -raw service_account_key | base64 --decode > ../gcp-pipeline-key.json
 ```
 
+*Note: `variables.tf` should be updated with your project_id before.*
+
 Set the credentials for the current session:
 
 ```bash

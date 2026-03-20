@@ -4,10 +4,17 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.providers.google.cloud.transfers.local_to_gcs import LocalFilesystemToGCSOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
+from pathlib import Path
+import hcl2
+
+CURRENT_DIR = Path(__file__).resolve().parent
+
+with open(CURRENT_DIR.parent / "terraform" / "variables.tf", "r") as f:
+    dict_data = hcl2.load(f)
 
 # Project variable
-PROJECT_ROOT = "/Users/hyunwoooh/fraud-detection"
-PROJECT_ID = "fraud-detection-486219"
+PROJECT_ROOT = CURRENT_DIR.parent
+PROJECT_ID = dict_data["variable"][0]["project_id"]["default"]
 BUCKET_NAME = f"fraud-detection-de-{PROJECT_ID}"
 DATASET_NAME = "fraud_detection"
 
